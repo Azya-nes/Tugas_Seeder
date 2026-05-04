@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\MahasiswaController;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa.index');
+Route::resource('mahasiswa', MahasiswaController::class);
