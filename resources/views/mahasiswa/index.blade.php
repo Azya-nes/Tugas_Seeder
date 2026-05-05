@@ -68,21 +68,12 @@
                                         >
                                             Edit
                                         </a>
-                                        <form 
-                                            action="{{ route('mahasiswa.destroy', $mahasiswa) }}" 
-                                            method="POST"
-                                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')"
-                                            class="inline"
+                                        <a 
+                                            href="{{ route('mahasiswa.confirmDelete', $mahasiswa) }}"
+                                            class="inline-flex items-center rounded-md bg-red-50 px-3 py-1.5 text-xs font-semibold text-red-700 hover:bg-red-100 transition-colors"
                                         >
-                                            @csrf
-                                            @method('DELETE')
-                                            <button 
-                                                type="submit"
-                                                class="inline-flex items-center rounded-md bg-red-50 px-3 py-1.5 text-xs font-semibold text-red-700 hover:bg-red-100 transition-colors"
-                                            >
-                                                Hapus
-                                            </button>
-                                        </form>
+                                            Hapus
+                                        </a>
                                     </div>
                                 </td>
                             </tr>

@@ -18,8 +18,8 @@ return new class extends Migration
             $table->char('kelas', 1);
             $table->string('hari');
             $table->timestamp('jam');
-            $table->foreign('kode_matakuliah')->references('kode_matakuliah')->on('matakuliah');
-            $table->foreign('nidn')->references('nidn')->on('dosen');
+            $table->foreign('kode_matakuliah')->references('kode_matakuliah')->on('matakuliah')->onDelete('cascade');
+            $table->foreign('nidn')->references('nidn')->on('dosen')->onDelete('cascade');
             $table->timestamps();
         });
     }

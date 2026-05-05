@@ -36,17 +36,21 @@
                     @enderror
                 </div>
 
-                <!-- NIDN Field -->
+                <!-- NIDN Field - Dropdown -->
                 <div>
                     <label for="nidn" class="block text-sm font-semibold text-slate-700 mb-2">NIDN (Nomor Induk Dosen Nasional) <span class="text-red-500">*</span></label>
-                    <input 
-                        type="text" 
+                    <select 
                         id="nidn" 
                         name="nidn"
-                        value="{{ old('nidn') }}"
-                        placeholder="Contoh: 1234567890"
-                        class="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-slate-900 placeholder-slate-400 shadow-sm transition-colors focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 @error('nidn') border-red-500 @enderror"
-                    />
+                        class="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm transition-colors focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 @error('nidn') border-red-500 @enderror"
+                    >
+                        <option value="">-- Pilih Dosen --</option>
+                        @foreach ($dosens as $dosen)
+                            <option value="{{ $dosen->nidn }}" {{ old('nidn') == $dosen->nidn ? 'selected' : '' }}>
+                                {{ $dosen->nama }} ({{ $dosen->nidn }})
+                            </option>
+                        @endforeach
+                    </select>
                     @error('nidn')
                         <p class="mt-1.5 text-sm font-medium text-red-600">{{ $message }}</p>
                     @enderror

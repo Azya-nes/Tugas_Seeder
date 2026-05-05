@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->char('npm', 10);
             $table->char('kode_matakuliah', 8);
-            $table->foreign('npm')->references('npm')->on('mahasiswa');
-            $table->foreign('kode_matakuliah')->references('kode_matakuliah')->on('matakuliah');
+            $table->foreign('npm')->references('npm')->on('mahasiswa')->onDelete('cascade');
+            $table->foreign('kode_matakuliah')->references('kode_matakuliah')->on('matakuliah')->onDelete('cascade');
             $table->timestamps();
         });
     }

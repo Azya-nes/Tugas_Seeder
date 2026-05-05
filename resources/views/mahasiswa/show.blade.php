@@ -74,21 +74,12 @@
                     >
                         Edit Data
                     </a>
-                    <form 
-                        action="{{ route('mahasiswa.destroy', $mahasiswa) }}" 
-                        method="POST"
-                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')"
-                        class="flex-1"
+                    <a 
+                        href="{{ route('mahasiswa.confirmDelete', $mahasiswa) }}" 
+                        class="flex-1 rounded-lg bg-gradient-to-r from-rose-600 to-pink-600 px-6 py-2.5 font-semibold text-white shadow-lg shadow-rose-500/30 transition-all hover:shadow-xl hover:shadow-rose-500/40 hover:scale-105 active:scale-95 text-center"
                     >
-                        @csrf
-                        @method('DELETE')
-                        <button 
-                            type="submit" 
-                            class="w-full rounded-lg bg-gradient-to-r from-rose-600 to-pink-600 px-6 py-2.5 font-semibold text-white shadow-lg shadow-rose-500/30 transition-all hover:shadow-xl hover:shadow-rose-500/40 hover:scale-105 active:scale-95"
-                        >
-                            Hapus Data
-                        </button>
-                    </form>
+                        Hapus Data
+                    </a>
                 </div>
                 <a 
                     href="{{ route('mahasiswa.index') }}" 

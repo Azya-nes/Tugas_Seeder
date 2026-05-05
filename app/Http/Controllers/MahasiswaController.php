@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dosen;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        return view('mahasiswa.create');
+        $dosens = Dosen::all();
+        return view('mahasiswa.create', compact('dosens'));
     }
 
     /**
@@ -53,7 +55,8 @@ class MahasiswaController extends Controller
      */
     public function edit(Mahasiswa $mahasiswa)
     {
-        return view('mahasiswa.edit', compact('mahasiswa'));
+        $dosens = Dosen::all();
+        return view('mahasiswa.edit', compact('mahasiswa', 'dosens'));
     }
 
     /**
@@ -69,6 +72,14 @@ class MahasiswaController extends Controller
         $mahasiswa->update($validated);
 
         return redirect()->route('mahasiswa.show', $mahasiswa)->with('success', 'Data mahasiswa berhasil diperbarui!');
+    }
+
+    /**
+     * Show confirmation page before deleting.
+     */
+    public function confirmDelete(Mahasiswa $mahasiswa)
+    {
+        return view('mahasiswa.delete', compact('mahasiswa'));
     }
 
     /**
